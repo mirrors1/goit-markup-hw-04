@@ -110,6 +110,7 @@ body {
   bottom: -1px;
 } */
 .menu-link {
+  position: relative;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
@@ -120,10 +121,7 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.menu-link.current {
-  position: relative;
-}
-.menu-link.current::after {
+.menu-link::after {
   content: '';
   position: absolute;
   left: 0;
@@ -132,7 +130,17 @@ body {
   height: 4px;
   background-color: #404bbf;
   border-radius: 2px;
+  opacity: 0;
+  transition-property: opacity;
+  transition-delay: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+.menu-link:hover::after,
+.menu-link:focus::after,
+.menu-link.current::after {
+  opacity: 1;
+}
+
 /* li.menu-item:first-child .menu-link {
   position: relative;
   color: #404bbf;
@@ -247,6 +255,7 @@ body {
   padding-top: 24px;
   padding-bottom: 24px;
   margin-bottom: 8px;
+  background-color: #f4f4fd;
 }
 .mission-icon {
   display: block;
@@ -340,6 +349,9 @@ body {
 .team-social-links .link:hover,
 .team-social-links .link:focus {
   background-color: #404bbf;
+}
+.team-social-links-item .icon {
+  fill: #f4f4fd;
 }
 
 /* #endregion section team */
@@ -436,10 +448,10 @@ img {
 }
 .footer-container {
   display: flex;
+  align-items: baseline;
 }
 .footer-logo-container {
   margin-right: 120px;
-  align-items: baseline;
 }
 /* .footer-item-container {
   display: flex;
